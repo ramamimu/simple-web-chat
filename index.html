@@ -10,49 +10,50 @@
 
     <title>NCC Project</title>
   </head>
-  <style>
-    #container{
-      margin: 10rem;
-      height: 30rem;
-      border-radius: 10px;
-    }
-  </style>
-  <body>
-    
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Welcome to live chat and share board</a>
-        </div>
+  <link rel="stylesheet" href="style.css">
+  <body>    
+    <nav class="navbar fixed-top navbar-dark bg-secondary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Welcome to live chat and share board</a>
+      </div>
     </nav>
 
-    <div id="container"  class="border border-5 rounded-3 d-flex flex-row align-items-center justify-content-evenly">
-      <!-- whiteboard -->
-      <div class="card">
-        <h5 class="card-header">Whiteboard</h5>
-        <div class="card-body">
-          <p class="card-text">You can share your imagination and thoughts here with other people</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+    <!-- content -->
+    <div class="conten rounded-3 ">
+
+      <div class="logo d-flex justify-content-evenly mb-5">
+        <img src="its.png" alt="">
+        <img src="ncc.png" alt="">
       </div>
-      <!-- livechat -->
-      <div class="card">
-        <h5 class="card-header">Livechat</h5>
-        <div class="card-body">
-          <p class="card-text">a place to confide in like-minded people, maybe also share important information</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+
+      <div class="tulisan text-center">
+              <h3>I hope you enjoy to our project</h3>
+      </div>
+      <div id="container"  class=" d-flex flex-column align-items-center justify-content-between p-4">
+          <div class="kartu d-flex flex-row justify-content-between ">
+          <!-- whiteboard -->
+          <div class="card">
+            <h5 class="card-header">Board</h5>
+            <img class="picture align-self-center" src="board.png" alt="" style="width: 10rem; height: auto;">
+            <div class="card-body">
+              <p class="card-text">You can share your imagination and thoughts here with other people</p>
+              <a href="#" class="btn btn-outline-secondary">Go somewhere</a>
+            </div>
+          </div>
+          <!-- livechat -->
+          <div class="card">
+            <h5 class="card-header">Livechat</h5>
+            <img class="picture align-self-center" src="livechat.png" alt="" style="width: 10rem; height: auto;">
+            <div class="card-body">
+              <p class="card-text">a place to confide in like-minded people, maybe also you can share information</p>
+              <a href="#" class="btn btn-outline-secondary">Go somewhere</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    
-    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
   </body>
 </html>

@@ -1,0 +1,35 @@
+.conten{
+    margin: 8rem 10rem 0 10rem;
+    height: auto;
+    padding: 0;
+}
+
+  img{
+    height: 5rem;
+  }
+
+  .tulisan{
+    border: solid 5px #6B94FA;
+    border-radius: 10px 10px 1rem 1rem;
+  }
+
+  #container{
+    border: solid 10px #6B94FA ;
+    border-radius: 1rem;
+    box-shadow: 0.6rem 1rem 1.5rem #9ba7ce;
+  }
+
+  .card{
+    border: solid 1px black;
+    margin: 2rem;
+    padding: 1rem;
+    flex-shrink: 50%;
+    /* width: 25rem; */
+  }
+  .card-header{
+    border-bottom: solid 1px black;
+    
+  }
+  .card-body{
+    border-top: solid 1px black;
+  }
