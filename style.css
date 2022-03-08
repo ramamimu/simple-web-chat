@@ -1,3 +1,48 @@
+/* livechat */
+.navbar-brand{
+  border-radius: 25px;
+  border: solid 1px white;
+}
+.navbar{
+  background-color: #428bdd;
+  border-bottom: solid 0.25rem #6B94FA;
+}
+.content{
+  margin-top: 130px;
+  border-top: solid 0.25rem white;
+}
+.room{
+  margin: 10px;
+  height: 270px;
+  width: 35%;
+}
+.person{
+  margin: 10px;
+  height: 510px;
+  width: 35%;
+}
+.message{
+  height: 790px;
+  width: 60%;
+  position: absolute;
+  left: 37%;
+  top: 145px;
+}
+.sec{
+  border: solid 0.25rem #6B94FA;
+  border-radius: 10px;
+}
+.sec p{
+  padding: 0.5rem;
+  padding-left: 1rem;
+  border-bottom: solid 0.25rem #6B94FA;
+  border-radius: 0 0 10px 10px;
+}
+
+
+
+
+/* index */
 .conten{
     margin: 8rem 10rem 0 10rem;
     height: auto;
@@ -24,7 +69,6 @@
     margin: 2rem;
     padding: 1rem;
     flex-shrink: 50%;
-    /* width: 25rem; */
   }
   .card-header{
     border-bottom: solid 1px black;
@@ -33,3 +77,4 @@
   .card-body{
     border-top: solid 1px black;
   }
+
