@@ -65,26 +65,6 @@
     <!-- script -->
     <script src="/socket.io/socket.io.js"></script>
     <!-- <script src="node_modules/socket.io/client-dist/socket.io.js"></script> -->
-    <script>
-      var socket = io();
-
-      var form = document.getElementById("form");
-      var input = document.getElementById("input");
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        if (input.value) {
-          socket.emit("chat message", input.value);
-          input.value = "";
-        }
-      });
-
-      socket.on("chat message", function (msg, room, name) {
-        var item = document.createElement("li");
-        item.textContent = name + ": " + msg + " ( from room: " + room + " )";
-        messages.appendChild(item);
-        window.scrollTo(0, document.body.scrollHeight);
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

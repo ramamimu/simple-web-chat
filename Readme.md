@@ -14,13 +14,13 @@
 
 [] Add endpoint where only some user allow to drawing
 
-[] trial multi room (fitur tambahan)
+[x] multi room
 
-[] trial room password (fitur tambahan)
+[] room password (fitur tambahan)
 
-[] adding silent feature to some person (fitur tambahan)
+[] adding mute feature to some person (fitur tambahan)
 
-[] adding silent feature to all person (fitur tambahan)
+[] adding mute feature to all person (fitur tambahan)
 
 ## Tambahan
 
