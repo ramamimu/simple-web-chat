@@ -33,6 +33,7 @@ debug.addEventListener("click", function () {
     colors[i].addEventListener("click", onColorUpdate, false);
   }
 
+  // server listener
   socket.on("drawing", onDrawingEvent);
 
   window.addEventListener("resize", onResize, false);

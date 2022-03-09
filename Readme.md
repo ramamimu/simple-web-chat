@@ -8,7 +8,7 @@
 
 [x] adding board feature
 
-[] Try sharing whiteboard
+[x] Try sharing whiteboard
 
 [] Add endpoint where all user allow to drawing
 
