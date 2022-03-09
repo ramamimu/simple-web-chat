@@ -2,9 +2,9 @@
 
 ## Target
 
-[] Success to join a room only one person in one room
+[x] Success to join a room only one person in one room
 
-[] Success to join a room with many person in one room
+[x] Success to join a room with many person in one room
 
 [] Try sharing whiteboard
 
@@ -19,3 +19,8 @@
 [] adding silent feature to some person (fitur tambahan)
 
 [] adding silent feature to all person (fitur tambahan)
+
+## Tambahan
+
+- namespace
+- endpoint

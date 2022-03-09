@@ -77,9 +77,9 @@
         }
       });
 
-      socket.on("chat message", function (msg) {
+      socket.on("chat message", function (msg, room, name) {
         var item = document.createElement("li");
-        item.textContent = msg;
+        item.textContent = name + ": " + msg + " ( from room: " + room + " )";
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
