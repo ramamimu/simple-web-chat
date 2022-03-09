@@ -1,5 +1,10 @@
+/* board */
+.board{
+  height: 820px;
+}
+
 /* livechat */
-.navbar-brand{
+.lc{
   border-radius: 25px;
   border: solid 1px white;
 }
