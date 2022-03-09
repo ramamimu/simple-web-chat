@@ -1,4 +1,5 @@
-var socket = io();
+// var socket = io("http://127.0.0.0:3000");
+let socket = io("http://127.0.0.0:3000");
 let name1 = Math.random();
 let name2 = Math.random();
 let name3 = Math.random();

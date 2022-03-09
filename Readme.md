@@ -10,9 +10,11 @@
 
 [x] Try sharing whiteboard
 
-[] Add endpoint where all user allow to drawing
+[x] adding namespace for board and chat
 
-[] Add endpoint where only some user allow to drawing
+[x] Add endpoint where all user allow to drawing
+
+[x] Add endpoint where only one user allow to drawing
 
 [x] multi room
 

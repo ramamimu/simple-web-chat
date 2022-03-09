@@ -8,15 +8,54 @@ debug.addEventListener("click", function () {
 // });
 
 (function () {
-  var socket = io();
-  var canvas = document.getElementsByClassName("whiteboard")[0];
-  var colors = document.getElementsByClassName("color");
-  var context = canvas.getContext("2d");
+  let socket = io("http://127.0.0.0:3000/draw");
+  let canvas = document.getElementsByClassName("whiteboard")[0];
+  let colors = document.getElementsByClassName("color");
+  let context = canvas.getContext("2d");
 
-  var current = {
+  // logic to adding user
+  let name1 = Math.random();
+  let name2 = Math.random();
+  let name3 = Math.random();
+  let rooms = ["room 1", "room 2", "room 3"];
+
+  let fullName = name1 + name2 + name3;
+  let pickRoom = rooms[Math.floor(Math.random() * 3)];
+  socket.emit("sarser", { name: fullName, room: pickRoom });
+  socket.on("sarser", () => {
+    console.log("MASUKKAH?");
+  });
+  // server listener
+  socket.on("drawing", onDrawingEvent);
+
+  socket.on("informasi", function (data) {
+    // console.log("harus kelola button masuk: ");
+    if (data.name != fullName) {
+      btn2.disabled = data.status;
+      btn.disabled = data.status;
+    }
+  });
+
+  // show current room
+  let showRoom = document.getElementById("room");
+  showRoom.textContent = fullName + " are in room " + pickRoom;
+  // get button
+  let btn = document.getElementById("kudeta");
+  let btn2 = document.getElementById("kudeta2");
+  btn.addEventListener("click", (e) => {
+    console.log("masuk event listener");
+    btn2.disabled = !btn2.disabled;
+    socket.emit("kudeta", { name: fullName, status: btn2.disabled });
+  });
+
+  // btn2.addEventListener("click", (e) => {
+  //   console.log("masuk ", e);
+  // });
+
+  let current = {
     color: "black",
   };
-  var drawing = false;
+  let drawing = false;
 
   canvas.addEventListener("mousedown", onMouseDown, false);
   canvas.addEventListener("mouseup", onMouseUp, false);
@@ -29,12 +68,9 @@ debug.addEventListener("click", function () {
   canvas.addEventListener("touchcancel", onMouseUp, false);
   canvas.addEventListener("touchmove", throttle(onMouseMove, 10), false);
 
-  for (var i = 0; i < colors.length; i++) {
+  for (let i = 0; i < colors.length; i++) {
     colors[i].addEventListener("click", onColorUpdate, false);
   }
-
-  // server listener
-  socket.on("drawing", onDrawingEvent);
 
   window.addEventListener("resize", onResize, false);
   onResize();
@@ -51,8 +87,8 @@ debug.addEventListener("click", function () {
     if (!emit) {
       return;
     }
-    var w = canvas.width;
-    var h = canvas.height;
+    let w = canvas.width;
+    let h = canvas.height;
 
     socket.emit("drawing", {
       x0: x0 / w,
@@ -107,9 +143,9 @@ debug.addEventListener("click", function () {
 
   // limit the number of events per second
   function throttle(callback, delay) {
-    var previousCall = new Date().getTime();
+    let previousCall = new Date().getTime();
     return function () {
-      var time = new Date().getTime();
+      let time = new Date().getTime();
 
       if (time - previousCall >= delay) {
         previousCall = time;
@@ -119,8 +155,8 @@ debug.addEventListener("click", function () {
   }
 
   function onDrawingEvent(data) {
-    var w = canvas.width;
-    var h = canvas.height;
+    let w = canvas.width;
+    let h = canvas.height;
     drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
   }
 

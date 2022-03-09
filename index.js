@@ -16,23 +16,12 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/public/board"));
 
 // rooms and event
+// namespace
+const chatting = io.of("/");
+const drawing = io.of("/draw");
 
-// let name1 = Math.random();
-// let name2 = Math.random();
-// let name3 = Math.random();
-// let fullName = name1 + name2 + name3;
-// let pickRoom = rooms[Math.floor(Math.random() * 3)];
-// let coba = io();
-// coba.emit("iseng", "anjasss");
-
-io.on("connection", (socket) => {
-  // let name1 = Math.random();
-  // let name2 = Math.random();
-  // let name3 = Math.random();
-  // let fullName = name1 + name2 + name3;
-  // const userId = await fetchUserId(socket);
-  // let pickRoom = rooms[Math.floor(Math.random() * 3)];
-  // socket.join(userId);
+chatting.on("connection", (socket) => {
+  // console.log("id socket: ", socket.id);
   let pickRoom, fullName;
   socket.on("sarser", (data) => {
     fullName = data.name;
@@ -40,25 +29,48 @@ io.on("connection", (socket) => {
     console.log("get room ", pickRoom);
     socket.join(pickRoom);
   });
-  // and then later
-  // io.to(userId).emit("hi");
-  console.log("a user connected");
-  // socket.on("iseng", (data) => {
-  //   console.log(data, " awowkaowkwo");
-  // });
+
+  console.log("a user connected in chatting");
   socket.on("disconnect", () => {
-    console.log("user disconnected");
+    console.log("user disconnected from chating");
   });
-  // let room = pickRoom;
 
   socket.on("chat message", (msg) => {
     console.log("message: " + msg + "( " + fullName + " : " + pickRoom + " )");
-    io.to(pickRoom).emit("chat message", msg, pickRoom, fullName);
+    chatting.to(pickRoom).emit("chat message", msg, pickRoom, fullName);
   });
-  // socket.on("drawing", (data) => socket.broadcast.emit("drawing", data));
+});
+
+drawing.on("connection", (socket) => {
+  // console.log("id socket: ", socket.id);
+
+  let pickRoom, fullName;
+  socket.on("sarser", (data) => {
+    fullName = data.name;
+    pickRoom = data.room;
+    console.log("get room ", pickRoom);
+    socket.join(pickRoom);
+  });
+
+  console.log("a user connected in drawing");
+  socket.on("disconnect", () => {
+    console.log("user disconnected from drawing");
+  });
+
   socket.on("drawing", (data) => {
-    // console.log("saya lagi menggambar");
-    socket.broadcast.emit("drawing", data);
+    // socket.broadcast.emit("drawing", data);
+    // console.log("draw in room: ", pickRoom);
+    socket.to(pickRoom).emit("drawing", data);
+  });
+
+  socket.on("kudeta", (data) => {
+    console.log("emit kudeta masuk: ", pickRoom, data);
+    // console.log("emit kudeta masuk");
+    // if (data.fullName != fullName) {
+    //   btn2.disabled = data.status;
+    //   btn.disabled = data.status;
+    // }
+    drawing.to(pickRoom).emit("informasi", data);
   });
 });
 
