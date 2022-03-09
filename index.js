@@ -6,8 +6,17 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/public/index.html");
 });
+app.use(express.static(__dirname + "/public"));
+// server
+// app.get("/draw", (req, res) => {
+//   res.sendFile(__dirname + "/board/public/index.html");
+// });
+
+// app.get("/draw",(req, req))
+
+// const router = express.Router();
 
 // io.on("connection", (socket) => {
 //   console.log("a user connected");

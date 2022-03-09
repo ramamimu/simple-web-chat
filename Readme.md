@@ -6,6 +6,8 @@
 
 [x] Success to join a room with many person in one room
 
+[x] adding board feature
+
 [] Try sharing whiteboard
 
 [] Add endpoint where all user allow to drawing
