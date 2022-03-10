@@ -31,7 +31,7 @@ let globalWidth = 50;
     if (onUname && unameID == fullName) {
       let pass = prompt("Password?", "");
       // emit passw
-      socket.emit("user pass", userName, fullName);
+      socket.emit("user pass", userName, pass, fullName);
       socket.on("user pass", (onPass, passID) => {
         console.log("masukk password");
         if (onPass && passID === fullName) {

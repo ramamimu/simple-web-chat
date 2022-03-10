@@ -1,6 +1,8 @@
 # Simple Web Chat Using Socket.io and Express
 
-## Target
+## Back-end Target
+
+##### every single steps progress
 
 [x] Success to join a room only one person in one room
 
@@ -18,14 +20,15 @@
 
 [x] multi room
 
-[x] room password (fitur tambahan)
-
-- case 1: menggunakan array biasa
-- case 2: menggunakan firebase
-
 [x] loggin system (addition feature)
 
+### implement prototype
+
 [x] adding erase, rectangle, and range width pen/object
+
+[x] integrated login system
+
+[] integrated room system
 
 ## Tambahan
 
@@ -35,3 +38,7 @@
 ## issue
 
 [x] unrecognize user still can drawing event others cannot see (solved)
+
+[] eraser cannot trigger when move + click
+
+[] pensil is weird when bigger

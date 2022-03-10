@@ -4,7 +4,11 @@ const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const { member, superUser } = require("./users/databaseMember.js");
+const {
+  cekMemberName,
+  cekMemberPass,
+  cekRooms,
+} = require("./users/databaseMember.js");
 
 // server and routing
 app.get("/", (req, res) => {
@@ -93,18 +97,18 @@ drawing.on("connection", (socket) => {
   // io.on("connection", (socket) => {
   socket.on("user login", (data, sid) => {
     console.log("sid di login= ", sid);
-    if (data === "admin") {
+    if (cekMemberName(data)) {
       drawing.emit("user login", true, sid);
     } else {
       drawing.emit("user login", false, sid);
     }
   });
-  socket.on("user pass", (data, sid) => {
+  socket.on("user pass", (data, pass, sid) => {
     console.log("sid di pass= ", sid);
-    if (data === "admin") {
+    if (cekMemberPass(data, pass)) {
       drawing.emit("user pass", true, sid);
     } else {
-      drawing.emit("user login", false, sid);
+      drawing.emit("user pass", false, sid);
     }
   });
   // });
