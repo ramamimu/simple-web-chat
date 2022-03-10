@@ -4,11 +4,7 @@ const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const {
-  cekMemberName,
-  cekMemberPass,
-  cekRooms,
-} = require("./users/databaseMember.js");
+const { cekMemberName, cekMemberPass } = require("./users/databaseMember.js");
 
 // server and routing
 app.get("/", (req, res) => {

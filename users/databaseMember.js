@@ -61,19 +61,6 @@ let member = [
   },
 ];
 
-let slotRooms = [
-  "room 1",
-  "room 2",
-  "room 3",
-  "room 4",
-  "room 5",
-  "room 6",
-  "room 7",
-  "room 8",
-  "room 9",
-  "room 10",
-];
-
 function cekMemberName(name) {
   let det = false;
   member.forEach((e) => {
@@ -90,9 +77,4 @@ function cekMemberPass(uname, pass) {
   return det;
 }
 
-function cekRooms(room) {
-  if (slotRooms.includes(room)) return true;
-  else return false;
-}
-
-module.exports = { cekMemberName, cekMemberPass, cekRooms };
+module.exports = { cekMemberName, cekMemberPass };

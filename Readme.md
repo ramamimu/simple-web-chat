@@ -26,9 +26,13 @@
 
 [x] adding erase, rectangle, and range width pen/object
 
-[x] integrated login system
+[x] integrated login system in board
 
-[] integrated room system
+[] integrated login system in chat room
+
+[] adding custom room
+
+[x] integrated room system
 
 ## Tambahan
 
@@ -39,6 +43,8 @@
 
 [x] unrecognize user still can drawing event others cannot see (solved)
 
-[] eraser cannot trigger when move + click
+[x] eraser cannot trigger when move + click
 
 [] pensil is weird when bigger
+
+[] each move to other page must to register uname, pass, room

@@ -19,34 +19,34 @@ let globalWidth = 50;
   let name1 = Math.random();
   let name2 = Math.random();
   let name3 = Math.random();
-  let rooms = ["room 1", "room 2", "room 3"];
+  let rooms = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
-  let fullName = name1 + name2 + name3;
-  let pickRoom = rooms[Math.floor(Math.random() * 3)];
+  let uID = name1 + name2 + name3;
+  let pickRoom = rooms[Math.floor(Math.random() * 10)];
   // authentification password
   let userName = prompt("Who's there?", "");
-  socket.emit("user login", userName, fullName);
+  socket.emit("user login", userName, uID);
   socket.on("user login", (onUname, unameID) => {
     console.log("masukk login " + onUname + " | ", unameID);
-    if (onUname && unameID == fullName) {
+    if (onUname && unameID == uID) {
       let pass = prompt("Password?", "");
       // emit passw
-      socket.emit("user pass", userName, pass, fullName);
+      socket.emit("user pass", userName, pass, uID);
       socket.on("user pass", (onPass, passID) => {
         console.log("masukk password");
-        if (onPass && passID === fullName) {
+        if (onPass && passID === uID) {
           // jika pass benar maka diemit
           alert("Welcome!");
-          socket.emit("sarser", { name: fullName, room: pickRoom });
+          socket.emit("sarser", { name: uID, room: pickRoom });
 
           // show current room
           let showRoom = document.getElementById("room");
-          showRoom.textContent = fullName + " are in room " + pickRoom + " | ";
-        } else if (passID === fullName) {
+          showRoom.textContent = uID + " are in room " + pickRoom + " | ";
+        } else if (passID === uID) {
           alert("Wrong password");
         }
       });
-    } else if (unameID == fullName) {
+    } else if (unameID == uID) {
       alert("I don't know you");
     }
   });
@@ -57,7 +57,7 @@ let globalWidth = 50;
   btn.addEventListener("click", (e) => {
     console.log("masuk event listener");
     btn2.disabled = !btn2.disabled;
-    socket.emit("kudeta", { name: fullName, status: btn2.disabled });
+    socket.emit("kudeta", { name: uID, status: btn2.disabled });
   });
 
   // btn2.addEventListener("click", (e) => {
@@ -71,7 +71,7 @@ let globalWidth = 50;
   // server listener
   socket.on("drawing", onDrawingEvent);
   socket.on("informasi", function (data) {
-    if (data.name != fullName) {
+    if (data.name != uID) {
       btn2.disabled = data.status;
       btn.disabled = data.status;
       console.log("masuk event ", btn2.disabled);
@@ -104,7 +104,7 @@ let globalWidth = 50;
     context.beginPath();
     context.moveTo(x0, y0);
     context.lineTo(x1, y1);
-    context.strokeStyle = color;
+    erase ? (context.strokeStyle = "white") : (context.strokeStyle = color);
     context.lineWidth = globalWidth;
     context.stroke();
     context.closePath();
@@ -216,8 +216,8 @@ let globalWidth = 50;
   });
   document.getElementById("erase").addEventListener("click", () => {
     erase = true;
-    rectangle = true;
-    pencil = false;
+    rectangle = false;
+    pencil = true;
   });
   document.getElementById("range").addEventListener("click", (e) => {
     // console.log(document.getElementById("range").value);
@@ -229,7 +229,7 @@ let globalWidth = 50;
     if (canvas.getContext) {
       var ctx = canvas.getContext("2d");
       ctx.beginPath();
-      erase ? (ctx.fillStyle = "white") : (ctx.fillStyle = current.color);
+      ctx.fillStyle = current.color;
       ctx.fillRect(xPoint, yPoint, globalWidth, globalWidth);
       ctx.stroke();
     }
