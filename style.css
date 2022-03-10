@@ -19,25 +19,25 @@
 .room{
   margin: 10px;
   height: 270px;
-  width: 35%;
+  width: 37%;
 }
 .person{
   margin: 10px;
   height: 510px;
-  width: 35%;
+  width: 37%;
 }
 .message{
   height: 790px;
   width: 60%;
   position: absolute;
-  left: 37%;
+  left: 39%;
   top: 145px;
 }
 .sec{
   border: solid 0.25rem #6B94FA;
   border-radius: 10px;
 }
-.sec p{
+.sec h5{
   padding: 0.5rem;
   padding-left: 1rem;
   border-bottom: solid 0.25rem #6B94FA;
