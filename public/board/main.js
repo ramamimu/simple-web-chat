@@ -45,14 +45,6 @@ debug.addEventListener("click", function () {
       alert("I don't know you");
     }
   });
-  // server listener
-  socket.on("drawing", onDrawingEvent);
-  socket.on("informasi", function (data) {
-    if (data.name != fullName) {
-      btn2.disabled = data.status;
-      btn.disabled = data.status;
-    }
-  });
 
   // get button
   let btn = document.getElementById("kudeta");
@@ -71,7 +63,19 @@ debug.addEventListener("click", function () {
     color: "black",
   };
   let drawing = false;
-
+  // server listener
+  socket.on("drawing", onDrawingEvent);
+  socket.on("informasi", function (data) {
+    if (data.name != fullName) {
+      btn2.disabled = data.status;
+      btn.disabled = data.status;
+      console.log("masuk event ", btn2.disabled);
+    }
+  });
+  // setInterval(function () {
+  //   console.log("buttonne iki gaes ", btn2.disabled);
+  // }, 1);
+  // if (!btn2.disabled) {
   canvas.addEventListener("mousedown", onMouseDown, false);
   canvas.addEventListener("mouseup", onMouseUp, false);
   canvas.addEventListener("mouseout", onMouseUp, false);
@@ -82,6 +86,7 @@ debug.addEventListener("click", function () {
   canvas.addEventListener("touchend", onMouseUp, false);
   canvas.addEventListener("touchcancel", onMouseUp, false);
   canvas.addEventListener("touchmove", throttle(onMouseMove, 10), false);
+  // }
 
   for (let i = 0; i < colors.length; i++) {
     colors[i].addEventListener("click", onColorUpdate, false);
@@ -115,12 +120,18 @@ debug.addEventListener("click", function () {
   }
 
   function onMouseDown(e) {
+    // jika kanvas diambil alih oleh orang lain
+    console.log(btn2.disabled + "||" + btn.disabled);
+    if (btn2.disabled && btn.disabled) return;
     drawing = true;
     current.x = e.clientX || e.touches[0].clientX;
     current.y = e.clientY || e.touches[0].clientY;
   }
 
   function onMouseUp(e) {
+    // jika kanvas diambil alih oleh orang lain
+    console.log(btn2.disabled + "||" + btn.disabled);
+    if (btn2.disabled && btn.disabled) return;
     if (!drawing) {
       return;
     }
@@ -136,6 +147,9 @@ debug.addEventListener("click", function () {
   }
 
   function onMouseMove(e) {
+    // jika kanvas diambil alih oleh orang lain
+    console.log(btn2.disabled + "||" + btn.disabled);
+    if (btn2.disabled && btn.disabled) return;
     if (!drawing) {
       return;
     }
@@ -152,6 +166,9 @@ debug.addEventListener("click", function () {
   }
 
   function onColorUpdate(e) {
+    // jika kanvas diambil alih oleh orang lain
+    console.log(btn2.disabled + "||" + btn.disabled);
+    if (btn2.disabled && btn.disabled) return;
     console.log("masuk ganti warna");
     current.color = e.target.className.split(" ")[1];
   }
