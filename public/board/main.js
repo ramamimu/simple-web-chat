@@ -3,6 +3,11 @@ debug.addEventListener("click", function () {
   console.log("MASUK SIH");
 });
 
+let pencil = true;
+let rectangle = false;
+let erase = false;
+let globalWidth = 50;
+
 (function () {
   let socket = io("http://127.0.0.0:3000/draw");
   let globalSocket = io("http://127.0.0.0:3000");
@@ -100,7 +105,7 @@ debug.addEventListener("click", function () {
     context.moveTo(x0, y0);
     context.lineTo(x1, y1);
     context.strokeStyle = color;
-    context.lineWidth = 2;
+    context.lineWidth = globalWidth;
     context.stroke();
     context.closePath();
 
@@ -121,16 +126,17 @@ debug.addEventListener("click", function () {
 
   function onMouseDown(e) {
     // jika kanvas diambil alih oleh orang lain
-    console.log(btn2.disabled + "||" + btn.disabled);
     if (btn2.disabled && btn.disabled) return;
-    drawing = true;
+    if (pencil) drawing = true;
     current.x = e.clientX || e.touches[0].clientX;
     current.y = e.clientY || e.touches[0].clientY;
+    console.log(current.x + "||" + current.y);
+    if (rectangle) callRect(current.x, current.y);
   }
 
   function onMouseUp(e) {
     // jika kanvas diambil alih oleh orang lain
-    console.log(btn2.disabled + "||" + btn.disabled);
+    // console.log(btn2.disabled + "||" + btn.disabled);
     if (btn2.disabled && btn.disabled) return;
     if (!drawing) {
       return;
@@ -148,7 +154,7 @@ debug.addEventListener("click", function () {
 
   function onMouseMove(e) {
     // jika kanvas diambil alih oleh orang lain
-    console.log(btn2.disabled + "||" + btn.disabled);
+    // console.log(btn2.disabled + "||" + btn.disabled);
     if (btn2.disabled && btn.disabled) return;
     if (!drawing) {
       return;
@@ -167,7 +173,7 @@ debug.addEventListener("click", function () {
 
   function onColorUpdate(e) {
     // jika kanvas diambil alih oleh orang lain
-    console.log(btn2.disabled + "||" + btn.disabled);
+    // console.log(btn2.disabled + "||" + btn.disabled);
     if (btn2.disabled && btn.disabled) return;
     console.log("masuk ganti warna");
     current.color = e.target.className.split(" ")[1];
@@ -196,5 +202,36 @@ debug.addEventListener("click", function () {
   function onResize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+  }
+
+  document.getElementById("rectangle").addEventListener("click", () => {
+    rectangle = true;
+    pencil = false;
+    erase = false;
+  });
+  document.getElementById("pen").addEventListener("click", () => {
+    pencil = true;
+    rectangle = false;
+    erase = false;
+  });
+  document.getElementById("erase").addEventListener("click", () => {
+    erase = true;
+    rectangle = true;
+    pencil = false;
+  });
+  document.getElementById("range").addEventListener("click", (e) => {
+    // console.log(document.getElementById("range").value);
+    globalWidth = document.getElementById("range").value;
+  });
+
+  function callRect(xPoint, yPoint) {
+    var canvas = document.getElementById("canvas");
+    if (canvas.getContext) {
+      var ctx = canvas.getContext("2d");
+      ctx.beginPath();
+      erase ? (ctx.fillStyle = "white") : (ctx.fillStyle = current.color);
+      ctx.fillRect(xPoint, yPoint, globalWidth, globalWidth);
+      ctx.stroke();
+    }
   }
 })();

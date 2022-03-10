@@ -58,14 +58,26 @@
     </style>
   </head>
   <body>
-    <canvas class="whiteboard"></canvas>
+    <canvas class="whiteboard" id="canvas"></canvas>
 
     <div class="colors" id="debug">
       <div class="color black"></div>
       <div class="color red"></div>
       <div class="color green"></div>
       <div class="color blue"></div>
-      <div class="color yellow"></div>
+      <div id="rectangle">rectangle</div>
+      <div id="pen">pencil</div>
+      <div id="erase">erase</div>
+      <div id="slider">
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="50"
+          class="slider"
+          id="range"
+        />
+      </div>
     </div>
     <h2 id="room" style="z-index: 999; position: absolute; bottom: 0">
       ANDA TIDAK BERADA DI RUANGAN MANAPUN HAHAHAHA

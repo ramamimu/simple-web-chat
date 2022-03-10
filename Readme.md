@@ -18,22 +18,14 @@
 
 [x] multi room
 
-[] connect to firebase database (kalo waktunya nyampek xixixi)
-
-[] room password (fitur tambahan)
+[x] room password (fitur tambahan)
 
 - case 1: menggunakan array biasa
 - case 2: menggunakan firebase
 
-[] loggin system (addition feature)
+[x] loggin system (addition feature)
 
-[] can join the same room chat/board with same people too (addition feature)
-
-[] adding super user possible to kick toxic member (kalo sukses connect firebasenya awokwok)
-
-[] adding mute feature to some person (fitur tambahan)
-
-[] adding mute feature to all person (fitur tambahan)
+[x] adding erase, rectangle, and range width pen/object
 
 ## Tambahan
 
@@ -42,4 +34,4 @@
 
 ## issue
 
-[] unrecognize user still can drawing event others cannot see
+[x] unrecognize user still can drawing event others cannot see (solved)
