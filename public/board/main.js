@@ -2,13 +2,10 @@ let debug = document.getElementById("debug");
 debug.addEventListener("click", function () {
   console.log("MASUK SIH");
 });
-// let debug = document.getElementsByClassName("colors")[0];
-// debug.addEventListener("click", function () {
-//   console.log("MASUK SIH");
-// });
 
 (function () {
   let socket = io("http://127.0.0.0:3000/draw");
+  let globalSocket = io("http://127.0.0.0:3000");
   let canvas = document.getElementsByClassName("whiteboard")[0];
   let colors = document.getElementsByClassName("color");
   let context = canvas.getContext("2d");
@@ -21,24 +18,42 @@ debug.addEventListener("click", function () {
 
   let fullName = name1 + name2 + name3;
   let pickRoom = rooms[Math.floor(Math.random() * 3)];
-  socket.emit("sarser", { name: fullName, room: pickRoom });
-  socket.on("sarser", () => {
-    console.log("MASUKKAH?");
+  // authentification password
+  let userName = prompt("Who's there?", "");
+  socket.emit("user login", userName, fullName);
+  socket.on("user login", (onUname, unameID) => {
+    console.log("masukk login " + onUname + " | ", unameID);
+    if (onUname && unameID == fullName) {
+      let pass = prompt("Password?", "");
+      // emit passw
+      socket.emit("user pass", userName, fullName);
+      socket.on("user pass", (onPass, passID) => {
+        console.log("masukk password");
+        if (onPass && passID === fullName) {
+          // jika pass benar maka diemit
+          alert("Welcome!");
+          socket.emit("sarser", { name: fullName, room: pickRoom });
+
+          // show current room
+          let showRoom = document.getElementById("room");
+          showRoom.textContent = fullName + " are in room " + pickRoom + " | ";
+        } else if (passID === fullName) {
+          alert("Wrong password");
+        }
+      });
+    } else if (unameID == fullName) {
+      alert("I don't know you");
+    }
   });
   // server listener
   socket.on("drawing", onDrawingEvent);
-
   socket.on("informasi", function (data) {
-    // console.log("harus kelola button masuk: ");
     if (data.name != fullName) {
       btn2.disabled = data.status;
       btn.disabled = data.status;
     }
   });
 
-  // show current room
-  let showRoom = document.getElementById("room");
-  showRoom.textContent = fullName + " are in room " + pickRoom;
   // get button
   let btn = document.getElementById("kudeta");
   let btn2 = document.getElementById("kudeta2");

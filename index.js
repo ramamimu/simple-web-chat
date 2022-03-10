@@ -4,6 +4,7 @@ const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+const { member, superUser } = require("./users/databaseMember.js");
 
 // server and routing
 app.get("/", (req, res) => {
@@ -16,6 +17,23 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/public/board"));
 
 // rooms and event
+// global endpoint
+// io.on("connection", (socket) => {
+//   socket.on("user login", (data, namespace) => {
+//     if (data === "admin") {
+//       io.of(namespace).emit("user login", true);
+//     } else {
+//       io.of(namespace).emit("user login", false);
+//     }
+//   });
+//   socket.on("user pass", (data, namespace) => {
+//     if (data === "admin") {
+//       io.of(namespace).emit("user pass", true);
+//     } else {
+//       io.of(namespace).emit("user login", false);
+//     }
+//   });
+// });
 // namespace
 const chatting = io.of("/");
 const drawing = io.of("/draw");
@@ -42,7 +60,7 @@ chatting.on("connection", (socket) => {
 });
 
 drawing.on("connection", (socket) => {
-  // console.log("id socket: ", socket.id);
+  // console.log("id socket: ", member[0].name);
 
   let pickRoom, fullName;
   socket.on("sarser", (data) => {
@@ -72,6 +90,24 @@ drawing.on("connection", (socket) => {
     // }
     drawing.to(pickRoom).emit("informasi", data);
   });
+  // io.on("connection", (socket) => {
+  socket.on("user login", (data, sid) => {
+    console.log("sid di login= ", sid);
+    if (data === "admin") {
+      drawing.emit("user login", true, sid);
+    } else {
+      drawing.emit("user login", false, sid);
+    }
+  });
+  socket.on("user pass", (data, sid) => {
+    console.log("sid di pass= ", sid);
+    if (data === "admin") {
+      drawing.emit("user pass", true, sid);
+    } else {
+      drawing.emit("user login", false, sid);
+    }
+  });
+  // });
 });
 
 server.listen(3000, () => {

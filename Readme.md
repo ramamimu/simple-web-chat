@@ -39,3 +39,7 @@
 
 - namespace
 - endpoint
+
+## issue
+
+[] unrecognize user still can drawing event others cannot see
