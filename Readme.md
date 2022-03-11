@@ -1,5 +1,15 @@
 # Simple Web Chat Using Socket.io and Express
 
+## Front-end Target
+
+[x] Create UI Dashboard
+
+[x] Create UI Livechat
+
+[x] Create UI Board
+
+[x] improve again : link to dashoard, button to page in card of dahsboard.
+
 ## Back-end Target
 
 ##### every single steps progress
