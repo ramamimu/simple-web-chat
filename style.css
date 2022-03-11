@@ -36,6 +36,7 @@
 .sec{
   border: solid 0.25rem #6B94FA;
   border-radius: 10px;
+  background-image: url(img/dynamic-style.png);
 }
 .sec h5{
   padding: 0.5rem;
@@ -61,6 +62,7 @@
   .tulisan{
     border: solid 5px #6B94FA;
     border-radius: 10px 10px 1rem 1rem;
+    box-shadow: 0.6rem 1rem 2rem #9ba7ce;
   }
 
   #container{
