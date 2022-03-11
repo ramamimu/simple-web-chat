@@ -1,0 +1,87 @@
+/* board */
+.board{
+  height: 820px;
+}
+
+/* livechat */
+.lc{
+  border-radius: 25px;
+  border: solid 1px white;
+}
+.navbar{
+  background-color: #428bdd;
+  border-bottom: solid 0.25rem #6B94FA;
+}
+.content{
+  margin-top: 130px;
+  border-top: solid 0.25rem white;
+}
+.room{
+  margin: 10px;
+  height: 270px;
+  width: 37%;
+}
+.person{
+  margin: 10px;
+  height: 510px;
+  width: 37%;
+}
+.message{
+  height: 790px;
+  width: 60%;
+  position: absolute;
+  left: 39%;
+  top: 145px;
+}
+.sec{
+  border: solid 0.25rem #6B94FA;
+  border-radius: 10px;
+  background-image: url(img/dynamic-style.png);
+}
+.sec h5{
+  padding: 0.5rem;
+  padding-left: 1rem;
+  border-bottom: solid 0.25rem #6B94FA;
+  border-radius: 0 0 10px 10px;
+}
+
+
+
+
+/* index */
+.conten{
+    margin: 8rem 10rem 0 10rem;
+    height: auto;
+    padding: 0;
+}
+
+  img{
+    height: 5rem;
+  }
+
+  .tulisan{
+    border: solid 5px #6B94FA;
+    border-radius: 10px 10px 1rem 1rem;
+    box-shadow: 0.6rem 1rem 2rem #9ba7ce;
+  }
+
+  #container{
+    border: solid 10px #6B94FA ;
+    border-radius: 1rem;
+    box-shadow: 0.6rem 1rem 1.5rem #9ba7ce;
+  }
+
+  .card{
+    border: solid 1px black;
+    margin: 2rem;
+    padding: 1rem;
+    flex-shrink: 50%;
+  }
+  .card-header{
+    border-bottom: solid 1px black;
+    
+  }
+  .card-body{
+    border-top: solid 1px black;
+  }
+
