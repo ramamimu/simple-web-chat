@@ -19,10 +19,11 @@ let globalWidth = 50;
   let name1 = Math.random();
   let name2 = Math.random();
   let name3 = Math.random();
-  let rooms = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  // let rooms = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  let rooms = ["1"];
 
   let uID = name1 + name2 + name3;
-  let pickRoom = rooms[Math.floor(Math.random() * 10)];
+  let pickRoom = rooms[Math.floor(Math.random() * 1)];
   // authentification password
   let userName = prompt("Who's there?", "");
   socket.emit("user login", userName, uID);
@@ -41,7 +42,7 @@ let globalWidth = 50;
 
           // show current room
           let showRoom = document.getElementById("room");
-          showRoom.textContent = uID + " are in room " + pickRoom + " | ";
+          showRoom.textContent = userName + " are in room " + pickRoom;
         } else if (passID === uID) {
           alert("Wrong password");
         }
@@ -102,6 +103,7 @@ let globalWidth = 50;
 
   function drawLine(x0, y0, x1, y1, color, emit) {
     context.beginPath();
+    console.log("x0 yo x1 y1", x0, y0, x1, y1);
     context.moveTo(x0, y0);
     context.lineTo(x1, y1);
     erase ? (context.strokeStyle = "white") : (context.strokeStyle = color);
@@ -114,6 +116,7 @@ let globalWidth = 50;
     }
     let w = canvas.width;
     let h = canvas.height;
+    console.log("awal x0 y0 x1 y1", x0, y0, x1, y1);
 
     socket.emit("drawing", {
       x0: x0 / w,
@@ -130,7 +133,7 @@ let globalWidth = 50;
     if (pencil) drawing = true;
     current.x = e.clientX || e.touches[0].clientX;
     current.y = e.clientY || e.touches[0].clientY;
-    console.log(current.x + "||" + current.y);
+    console.log("hayukk ", current.x + "||" + current.y);
     if (rectangle) callRect(current.x, current.y);
   }
 
@@ -195,6 +198,7 @@ let globalWidth = 50;
   function onDrawingEvent(data) {
     let w = canvas.width;
     let h = canvas.height;
+    console.log("w h || ", w, " ", h);
     drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
   }
 

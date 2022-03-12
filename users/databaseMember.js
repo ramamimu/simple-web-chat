@@ -4,7 +4,7 @@ let member = [
     pass: "ramahtamah",
   },
   {
-    name: "ramah",
+    name: "ramahhh",
     pass: "hadeuhh",
   },
   {
