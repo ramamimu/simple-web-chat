@@ -10,33 +10,20 @@ const { cekMemberName, cekMemberPass } = require("./users/databaseMember.js");
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
-app.get("/draw", (req, res) => {
-  res.sendFile(__dirname + "/public/board/index.html");
+app.get("/board", (req, res) => {
+  res.sendFile(__dirname + "/public/board/board.html");
 });
+app.get("/livechat", (req, res) => {
+  res.sendFile(__dirname + "/public/livechat/livechat.html");
+});
+
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/public/board"));
+app.use(express.static(__dirname + "/public/livechat"));
 
-// rooms and event
-// global endpoint
-// io.on("connection", (socket) => {
-//   socket.on("user login", (data, namespace) => {
-//     if (data === "admin") {
-//       io.of(namespace).emit("user login", true);
-//     } else {
-//       io.of(namespace).emit("user login", false);
-//     }
-//   });
-//   socket.on("user pass", (data, namespace) => {
-//     if (data === "admin") {
-//       io.of(namespace).emit("user pass", true);
-//     } else {
-//       io.of(namespace).emit("user login", false);
-//     }
-//   });
-// });
 // namespace
-const chatting = io.of("/");
-const drawing = io.of("/draw");
+const chatting = io.of("/livechat");
+const drawing = io.of("/board");
 
 chatting.on("connection", (socket) => {
   // console.log("id socket: ", socket.id);

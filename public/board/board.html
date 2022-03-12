@@ -8,28 +8,30 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./../style.css">
     <title>board</title>
   </head>
   <body>
 
     <div class="navbar fixed-top justify-content-evenly navbar-dark">
-      <a target="_blank" href="https://instagram.com/its_campus"><img style="height: 75px;" src="img/its.png" alt=""></a>
-        <a class="lc navbar-brand fs-1 fw-bolder bg-secondary p-4" href="index.html" style="color: white;">BOARD</a>
-      <a target="_blank" href="https://instagram.com/ncclab_its"><img style="height: 75px;" src="img/ncc.png" alt=""></a>
+      <a target="_blank" href="https://instagram.com/its_campus"><img style="height: 75px;" src="./../img/its.png" alt=""></a>
+        <!-- <a class="lc navbar-brand fs-1 fw-bolder bg-secondary p-4" href="./../board/board.html" style="color: white;">BOARD</a> -->
+        <a class="lc navbar-brand fs-1 fw-bolder bg-secondary p-4" href="/" style="color: white;">BOARD</a>
+      <a target="_blank" href="https://instagram.com/ncclab_its"><img style="height: 75px;" src="./../img/ncc.png" alt=""></a>
     </div>
 
     <div class="content position-absolute bottom-0" style="width: 100%;">
       <div class="sec board">
         <h5>draw your imagine here </h5>
-       
+        <canvas></canvas>
 
         <div class="position-absolute bottom-0 end-0" style="width: 75%;">
           <div class="sec item" style="height: 60px; border-radius: 10px 0 0 0 ;">
 
             <!-- link to livechat -->
             <nav class="navbar position-absolute end-0"> 
-              <a style="height: 35px; margin: 0 10px 0 10px;" class="btn btn-outline-light" href="livechat.html" role="button"><i class="bi bi-chat-dots"></i></a>
+              <!-- <a style="height: 35px; margin: 0 10px 0 10px;" class="btn btn-outline-light" href="./../livechat/livechat.html" role="button"><i class="bi bi-chat-dots"></i></a> -->
+              <a style="height: 35px; margin: 0 10px 0 10px;" class="btn btn-outline-light" href="/livechat" role="button"><i class="bi bi-chat-dots"></i></a>
             </nav>
 
           </div>
@@ -40,5 +42,6 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
   </body>
 </html> -->
