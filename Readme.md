@@ -1,14 +1,9 @@
 # Simple Web Chat Using Socket.io and Express
 
-## Front-end Target
+# Deksripsi
 
-[x] Create UI Dashboard
-
-[x] Create UI Livechat
-
-[x] Create UI Board
-
-[x] improve again : link to dashoard, button to page in card of dahsboard.
+Web ini bertipe multipage.
+Ketika masuk pada web ini, user akan masuk pada halaman dashboard. dari dashboard tersebut user bisa pindah page dengan menekan button yang tersedia. yaitu, page ke board atau livechat. Begitu juga pada page selain dashboard, user juga bisa pindah page dengan menggunakan button yang tersedia pada setiap pagenya.
 
 ## Back-end Target
 
