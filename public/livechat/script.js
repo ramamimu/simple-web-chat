@@ -4,6 +4,8 @@ let name1 = Math.random();
 let name2 = Math.random();
 let name3 = Math.random();
 let rooms = ["room 1", "room 2", "room 3"];
+// let Buffer = require("buffer").Buffer;
+
 // let rooms = ["room 1"];
 
 // let rl = document.getElementById("roomlll");
@@ -31,6 +33,7 @@ form.addEventListener("submit", function (e) {
 });
 
 socket.on("chat message", function (msg, room, name) {
+  console.log(new Date().getTime() + " : " + msg);
   var item = document.createElement("li");
   item.textContent = name + ": " + msg + " ( from room: " + room + " )";
   messages.appendChild(item);
